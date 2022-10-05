@@ -497,10 +497,8 @@
     "@babel/helper-validator-identifier" "^7.22.5"
     to-fast-properties "^2.0.0"
 
-"@cartesi/rollups@^1.0.0-rc.0":
-  version "1.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/@cartesi/rollups/-/rollups-1.0.0-rc.2.tgz#7560961e02597f061d6b189adde15964a1f246ef"
-  integrity sha512-43Cqqfcm8NQnhiuYqtYc77zwiYxAZleclMdfcHbPq1pvj/t6L/m5rcSJdD0qJLZ6GqZhXIYMYA3ycR08lKODGw==
+"@cartesi/rollups@file:../../rollups/onchain/rollups":
+  version "0.9.0"
   dependencies:
     "@cartesi/util" "6.0.0"
     "@openzeppelin/contracts" "4.9.2"
