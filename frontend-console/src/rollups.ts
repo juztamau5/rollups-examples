@@ -19,6 +19,8 @@ import {
     OutputFacet__factory,
     ERC20PortalFacet,
     ERC20PortalFacet__factory,
+    ERC1155PortalFacet,
+    ERC1155PortalFacet__factory,
 } from "@cartesi/rollups";
 import { Argv } from "yargs";
 import { networks } from "./networks";
@@ -33,6 +35,7 @@ interface Contracts {
     inputContract: InputFacet;
     outputContract: OutputFacet;
     erc20Portal: ERC20PortalFacet;
+    erc1155Portal: ERC1155PortalFacet;
 }
 
 /**
@@ -109,9 +112,14 @@ export const rollups = async (
     const inputContract = InputFacet__factory.connect(address, provider);
     const outputContract = OutputFacet__factory.connect(address, provider);
     const erc20Portal = ERC20PortalFacet__factory.connect(address, provider);
+    const erc1155Portal = ERC1155PortalFacet__factory.connect(
+        address,
+        provider
+    );
     return {
         inputContract,
         outputContract,
         erc20Portal,
+        erc1155Portal,
     };
 };
