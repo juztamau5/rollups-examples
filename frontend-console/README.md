@@ -33,6 +33,7 @@ $ yarn start --help
 
 Commands:
   index.ts erc20 <command>    Operations with ERC-20 tokens
+  index.ts erc721 <command>  Operations with ERC-721 tokens
   index.ts input <command>    Operations with inputs
   index.ts inspect            Inspect the state of the DApp
   index.ts notice <command>   Operations with notices
@@ -259,3 +260,42 @@ Options are:
 If the `erc20` address is unspecified, the appropriate address for the CTSI token will be used for the target blockchain being specified.
 
 Aside from that, the other parameters have the same behavior as described for the [input send](#options) command.
+
+### Depositing ERC-721 tokens
+
+The `erc721 deposit` command deposits ERC-721 tokens in the DApp.
+
+```shell
+yarn start erc721 deposit --id [id] <options>
+```
+
+Examples:
+
+1. Deposit token with ID 0 in the locally deployed DApp:
+
+    ```shell
+    yarn start erc721 deposit --id 0
+    ```
+
+1. Deposit token with ID 0 in the `echo-python` DApp instance already deployed to the Ethereum Goerli testnet, using a user's account and a user's gateway RPC on Alchemy:
+
+    ```shell
+    export MNEMONIC=<user sequence of twelve words>
+    export RPC_URL=https://eth-goerli.alchemyapi.io/v2/<USER_KEY>
+
+    yarn start erc721 deposit --id 0 --dapp echo-python
+    ```
+
+Options are:
+
+```shell
+--erc721       ERC-721 address
+--rpc           URL of the RPC gateway to use
+--address       DApp Rollups contract address
+--addressFile   Path to a file containing the DApp Rollups contract address
+--dapp          DApp name
+--mnemonic      Wallet mnemonic
+--accountIndex  Account index from mnemonic
+```
+
+The parameters have the same behavior as described for the [input send](#options) command.
