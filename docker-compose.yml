@@ -32,6 +32,23 @@ services:
       - blockchain-data:/opt/cartesi/share/blockchain
       - ./deployments:/app/deployments
 
+  lp_nft_deployer:
+    image: juztamau5/lp-nft-deployer:devel
+    restart: on-failure
+    depends_on:
+      hardhat:
+        condition: service_healthy
+    command:
+      [
+        "deploy",
+        "--network",
+        "docker",
+      ]
+    #volumes:
+    #  - blockchain-data:/opt/cartesi/share/blockchain
+    #  - machine:/opt/cartesi/share/dapp-bin:ro
+    #  - ./deployments:/deployments
+
   rollups_dispatcher:
     image: cartesi/rollups-dispatcher:0.6.0
     command:
@@ -148,6 +165,8 @@ services:
       hardhat:
         condition: service_healthy
       deployer:
+        condition: service_completed_successfully
+      lp_nft_deployer:
         condition: service_completed_successfully
     command:
       [
