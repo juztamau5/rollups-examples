@@ -10,7 +10,7 @@ x-credentials: &postgres-config
 
 services:
   hardhat:
-    image: cartesi/rollups-hardhat:0.6.0
+    image: juztamau5/rollups-hardhat:devel
     command:
       [
         "node",
@@ -132,7 +132,7 @@ services:
       - machine:/opt/cartesi/share/dapp-bin
 
   deployer:
-    image: cartesi/rollups-cli:0.6.0
+    image: juztamau5/rollups-cli:devel
     restart: on-failure
     depends_on:
       hardhat:
@@ -152,6 +152,8 @@ services:
         "/opt/cartesi/share/dapp-bin/hash",
         "--outputFile",
         "/deployments/localhost/dapp.address",
+        "--jsonFile",
+        "/deployments/localhost/dapp.json",
       ]
     volumes:
       - blockchain-data:/opt/cartesi/share/blockchain
