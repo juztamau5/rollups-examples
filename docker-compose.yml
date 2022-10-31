@@ -10,7 +10,7 @@ x-credentials:
 
 services:
   hardhat:
-    image: cartesi/rollups-hardhat:1.0.0-rc.2
+    image: juztamau5/rollups-hardhat:1.0.0
     command:
       [
         "node",
@@ -131,7 +131,7 @@ services:
       - REMOTE_CARTESI_MACHINE_LOG_LEVEL=info
 
   deployer:
-    image: cartesi/rollups-cli:1.0.0-rc.2
+    image: juztamau5/rollups-cli:1.0.0
     restart: on-failure
     depends_on:
       hardhat:
